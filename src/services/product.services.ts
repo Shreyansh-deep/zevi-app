@@ -12,7 +12,7 @@ export const getProducts = (): Product[] => {
       imageUrl: faker.image.urlLoremFlickr({ category: "fashion" }),
       name: faker.commerce.productName(),
       price: productPrice,
-      brand: index % 2 == 0 ? "H&M" : "Mango",
+      brand: index % 2 === 0 ? "H&M" : "Mango",
       rating: Math.floor(Math.random() * 5),
       discount: productPrice + 400,
       ratingsCount: Math.floor(Math.random() * 1000),

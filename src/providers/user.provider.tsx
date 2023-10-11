@@ -1,6 +1,4 @@
 import { FC, PropsWithChildren, createContext, useContext, useState } from "react";
-import { SearchContextType } from "./search.provider";
-import { Product } from "src/types/models";
 
 export interface UserContextType {
     favorites: string[];

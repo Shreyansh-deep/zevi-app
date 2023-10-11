@@ -1,4 +1,4 @@
-import { FC, FormEvent, useRef, useState } from "react";
+import { FC, FormEvent, useRef } from "react";
 import "./search-bar.styles.scss";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 

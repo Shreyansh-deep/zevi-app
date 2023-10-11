@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Product } from "src/types/models";
 import "./card.styles.scss";
 import { Rating } from "react-simple-star-rating";

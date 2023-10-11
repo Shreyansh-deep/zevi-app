@@ -12,7 +12,7 @@ const Suggestions = () => {
         {getTrendingProducts(products).map((product) => (
           <div className="trending">
             <div className="image-wrapper">
-                <img src={product.imageUrl} />
+                <img src={product.imageUrl} alt="product-name"/>
             </div>
             <p>{product.name}</p>
           </div>
