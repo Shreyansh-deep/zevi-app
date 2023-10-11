@@ -1,0 +1,11 @@
+.filter_option {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    .option_title {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 300;
+        text-transform: capitalize;
+    }
+}

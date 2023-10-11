@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import SearchBar from "./components/search-bar/search-bar.component";
+import SearchedItems from "./components/searched-item/searched-item";
+import Suggestions from "./components/suggestions/suggestions.component";
+import { useSearchContext } from "./providers/search.provider";
 
 function App() {
+  const { searchResult, performSearch } = useSearchContext();
+  const [show, setShow] = useState(false);
+  const toggleShowSuggestion = () => {
+    setShow((prev) => !prev);
+  };
+
+  const handleSearch = (text: string) => {
+    setShow(false);
+    performSearch(text);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBar onClick={toggleShowSuggestion} onSearch={handleSearch} />
+      {show && !searchResult.length && <Suggestions />}
+      {!show && !!searchResult.length && <SearchedItems />}
     </div>
   );
 }

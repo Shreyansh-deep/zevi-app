@@ -1,0 +1,18 @@
+.filter {
+    width: 100%;
+    .filter_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .filter_title {
+            font-family: Inter;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .filter_body {
+
+    }
+}

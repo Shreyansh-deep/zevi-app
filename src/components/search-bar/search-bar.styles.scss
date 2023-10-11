@@ -1,0 +1,26 @@
+.search {
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    .search_bar{
+        border: 1px solid grey;
+        width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        border-radius: 10px;
+        .search_bar_input {
+            width: 80%;
+            height: 40px;
+            border-radius: 10px;
+            border: 0;
+            outline: none;
+        }
+    }
+}
+
+
