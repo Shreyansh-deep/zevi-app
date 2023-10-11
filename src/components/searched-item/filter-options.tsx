@@ -13,11 +13,11 @@ export const pricingFilters: FilterOption[] = [
 ];
 
 export const ratingFilters: FilterOption[] = [
-  { title: <Rating initialValue={5} readonly size={20} />, type: FilterType.PRICE_RANGE, value: 5 },
-  { title: <Rating initialValue={4} readonly size={20} />, type: FilterType.PRICE_RANGE, value: 4 },
-  { title: <Rating initialValue={3} readonly size={20} />, type: FilterType.PRICE_RANGE, value: 3 },
-  { title: <Rating initialValue={2} readonly size={20} />, type: FilterType.PRICE_RANGE, value: 2 },
-  { title: <Rating initialValue={1} readonly size={20} />, type: FilterType.PRICE_RANGE, value: 1 },
+  { title: <Rating initialValue={5} readonly size={20} />, type: FilterType.RATING, value: 5 },
+  { title: <Rating initialValue={4} readonly size={20} />, type: FilterType.RATING, value: 4 },
+  { title: <Rating initialValue={3} readonly size={20} />, type: FilterType.RATING, value: 3 },
+  { title: <Rating initialValue={2} readonly size={20} />, type: FilterType.RATING, value: 2 },
+  { title: <Rating initialValue={1} readonly size={20} />, type: FilterType.RATING, value: 1 },
 ];
 
 

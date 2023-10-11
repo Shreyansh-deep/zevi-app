@@ -8,6 +8,7 @@ import {
 import { Product } from "../types/models";
 import { useProductsContext } from "./products.provider";
 import { FilterOption } from "src/types/filters.type";
+import { FilterType } from "src/types/enums";
 
 export interface SearchContextType {
   searchResult: Product[];
@@ -25,26 +26,65 @@ export const SearchContext = createContext<SearchContextType>({
 
 const SearchProvider: FC<PropsWithChildren> = ({ children }) => {
   const [searchResult, setResult] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProduct] = useState<Product[]>([]);
   const [filters, setFilter] = useState<FilterOption[]>([]);
   const { products } = useProductsContext();
+
   const updateFilter = (filterToUpdate: FilterOption) => {
     const existingFilters = filters.find((filter) => {
       return filter.value === filterToUpdate.value;
     });
+    let newFilters = filters;
+    let newResults = [...searchResult];
+
     if (existingFilters) {
-      setFilter((prev) =>
-        prev.filter((e) => e.value !== existingFilters.value)
-      );
-      return;
+      newFilters = newFilters.filter((e) => e.value !== existingFilters.value);
+    } else {
+      newFilters = [...newFilters, filterToUpdate];
     }
-    setFilter((prev) => [...prev, filterToUpdate]);
+
+    newFilters.forEach((filter) => {
+      switch (filter.type) {
+        case FilterType.BRAND:
+          newResults = newResults.filter(
+            (product) => product.brand === filter.value
+          );
+          break;
+        case FilterType.PRICE_RANGE:
+          const minRange = filter.value.split(":")[0];
+          const maxRange = filter.value.split(":")[1];
+          newResults = newResults.filter(
+            (product) => product.price >= minRange && product.price <= maxRange
+          );
+          break;
+        case FilterType.RATING:
+          newResults = newResults.filter(
+            (product) => product.rating === filter.value
+          );
+          break;
+        default:
+          break;
+      }
+    });
+
+    setFilter(newFilters);
+    setFilteredProduct(newResults);
   };
-  const performSearch = (text: string) =>
-    setResult(products.filter((product) => product.name.includes(text)));
+
+  const performSearch = (text: string) => {
+    const result = products.filter((product) => product.name.includes(text));
+    setResult(result);
+    setFilteredProduct(result);
+  };
 
   return (
     <SearchContext.Provider
-      value={{ searchResult, performSearch, filters, updateFilter }}
+      value={{
+        searchResult: filteredProducts,
+        performSearch,
+        filters,
+        updateFilter,
+      }}
     >
       {children}
     </SearchContext.Provider>

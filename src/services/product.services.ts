@@ -9,7 +9,7 @@ export const getProducts = (): Product[] => {
     const productPrice = Number(faker.commerce.price());
     const product: Product = {
       id: faker.string.uuid(),
-      imageUrl: faker.image.urlLoremFlickr({ category: "fashion" }),
+      imageUrl: faker.image.urlLoremFlickr(),
       name: faker.commerce.productName(),
       price: productPrice,
       brand: index % 2 === 0 ? "H&M" : "Mango",
